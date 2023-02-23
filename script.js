@@ -87,14 +87,44 @@ function insert(num){
   }
 
   function getresult(){
-    // for(var i = 0;i< operators.length;i++){
-    //   if(operators[i] == '*'){
-    //     var index = i;
-    //   }
-    // }
-
+    var operator ;
+    for(var i = 0; i< operators.length; i++){
+      console.log(i);
+      if(operators[i] == '*'){
+        operator = operators.splice(i,1);
+        var number1 = number.splice(i,1);
+        var number2 = number.splice(i,1);
+        number.splice(i+1,0,number1 * number2);
+        console.log(i,operator,number1,number2);
+        console.log(number);
+        console.log(operators);
+        i = 0;
+      }
+      if(operators[i] == '/'){
+        operator = operators.splice(i,1);
+        var number1 = number.splice(i,1);
+        var number2 = number.splice(i,1);
+        number.splice(i,0,number1 / number2);
+        console.log(i,operator,number1,number2,number);
+        console.log(number);
+        console.log(operators);
+        i =0;
+      }
+      if(operators[i] == '%'){
+        operator = operators.splice(i,1);
+        var number1 = number.splice(i,1);
+        var number2 = number.splice(i,1);
+        number.splice(i,0,number1 % number2);
+        console.log(i,operator,number1,number2,number);
+        console.log(number);
+        console.log(operators);
+        i = 0;
+      }
+      
+    }
+    console.log(number , operator)
     while(operators.length > 0){
-      var operator  = operators.pop();
+       operator  = operators.pop();
       getMethode(operator);
     }
 
@@ -113,12 +143,12 @@ function insert(num){
       number.push(number2 - number1);
     }
 
-    else if(operator == '*')
-    number.push(number2 * number1);
+    // else if(operator == '*')
+    // number.push(number2 * number1);
 
-    else if(operator == '/')
-    number.push(number2 / number1);
+    // else if(operator == '/')
+    // number.push(number2 / number1);
 
-    else if(operator == '%')
-    number.push(number2 % number1);
+    // else if(operator == '%')
+    // number.push(number2 % number1);
   }
